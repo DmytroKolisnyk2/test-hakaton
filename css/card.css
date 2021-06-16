@@ -7,6 +7,7 @@
    width: 100%;
    transition: 400ms linear;
    border: 2px solid var(--main-yellow);
+   margin: 10px auto;
 }
 .card__btn {
    width: 50px;
