@@ -8,10 +8,10 @@ const string = `<div class="card">
             <li class="card__controls-item"><button class="card__btn card__btn--arrow">&#62;</button></li>
          </ul>
       </div>`;
-document.querySelector(".column").insertAdjacentHTML("afterbegin", string);
-document.querySelector(".column").insertAdjacentHTML("afterbegin", string);
-document.querySelector(".column").insertAdjacentHTML("afterbegin", string);
-document.querySelector(".column").insertAdjacentHTML("afterbegin", string);
+// document.querySelector(".column").insertAdjacentHTML("afterbegin", string);
+// document.querySelector(".column").insertAdjacentHTML("afterbegin", string);
+// document.querySelector(".column").insertAdjacentHTML("afterbegin", string);
+// document.querySelector(".column").insertAdjacentHTML("afterbegin", string);
 
 const removeCard = (event) => {
    event.currentTarget.parentNode.parentNode.parentNode.classList.add("hidden-card");
