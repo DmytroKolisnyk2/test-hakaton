@@ -24,6 +24,7 @@
 }
 .column__title {
    font-family: var(--main-font);
+	 width: 100%;
    font-size: 30px;
    text-align: center;
    color: #3fc1c9;
@@ -73,7 +74,7 @@
    height: calc(100% - 160px);
    overflow-y: scroll;
    border-radius: var(--main-border-radius);
-   padding: 1px 0 45px;
+   padding: 1px 10px 1px;
    position: relative;
    height: 100%;
    background: rgb(6, 6, 6);
