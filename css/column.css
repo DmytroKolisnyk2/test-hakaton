@@ -11,7 +11,7 @@
 .column {
    max-width: 420px;
    width: 33.333%;
-   min-height: calc(100vh - 100px);
+   height: calc(100vh - 100px);
    border-radius: var(--main-border-radius);
    border: 3px solid var(--main-blue);
    background-color: #3fc1c9;
@@ -24,7 +24,7 @@
 }
 .column__title {
    font-family: var(--main-font);
-   font-size: 36px;
+   font-size: 30px;
    text-align: center;
    color: #3fc1c9;
    margin: 0 auto;
@@ -33,15 +33,9 @@
    background: linear-gradient(0deg, rgba(6, 6, 6, 0.7150210425967262) 33%, rgba(8, 9, 9, 0.6982143199076505) 66%);
    margin-bottom: 10px;
 }
-
-.card {
-   height: 325px;
-}
-
 .column__wrapper--plus {
    text-align: center;
    margin: 0;
-   position: absolute;
    align-items: center;
    line-height: 30px;
    font-size: 30px;
@@ -53,7 +47,8 @@
    width: 50px;
    height: 50px;
    border-radius: 50%;
-   position: absolute;
+	 position: absolute;
+   position: sticky;
    color: var(--main-grey);
    transform: scale(1);
    transition: all 0.4s;
@@ -63,17 +58,20 @@
    display: flex;
    justify-content: center;
    align-items: center;
-	 bottom: 20px;
-	 left: 50%;
-	 transform: translate(-50%, 0%);
+   bottom: 20px;
+	 top: 20px;
+   left: 50%;
+   transform: translate(-50%, 0%);
 }
 
 .column__plus-wrapper:hover {
-   transform:translate(-50%, 0%) scale(1.1);
+   transform: translate(-50%, 0%) scale(1.1);
    opacity: 1;
 }
 
 .column__wrapper-cards {
+   height: calc(100% - 160px);
+   overflow-y: scroll;
    border-radius: var(--main-border-radius);
    padding: 1px 0 45px;
    position: relative;
@@ -81,11 +79,11 @@
    background: rgb(6, 6, 6);
    background: linear-gradient(0deg, rgba(6, 6, 6, 0.7150210425967262) 33%, rgba(8, 9, 9, 0.6982143199076505) 66%);
 }
-
 .column__plus-wrapper-right{
 	right: 25px;
 	margin-left: 20px;
 	border: 2px solid var(--main-grey);
+
    width: 50px;
    height: 80px;
    position: absolute;
