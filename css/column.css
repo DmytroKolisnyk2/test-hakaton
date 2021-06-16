@@ -26,8 +26,11 @@
    font-family: var(--main-font);
    font-size: 36px;
    text-align: center;
-   color: #222222;
-   background-color: transparent;
+   color: #3fc1c9;
+   margin: 0 auto;
+   border-radius: 10px;
+   background: rgb(6, 6, 6);
+   background: linear-gradient(0deg, rgba(6, 6, 6, 0.7150210425967262) 33%, rgba(8, 9, 9, 0.6982143199076505) 66%);
    margin-bottom: 10px;
 }
 
@@ -73,8 +76,43 @@
 .column__wrapper-cards {
    border-radius: var(--main-border-radius);
    padding: 1px 0 45px;
-	 position: relative;
+   position: relative;
    height: 100%;
    background: rgb(6, 6, 6);
    background: linear-gradient(0deg, rgba(6, 6, 6, 0.7150210425967262) 33%, rgba(8, 9, 9, 0.6982143199076505) 66%);
+}
+
+.column__plus-wrapper-right{
+	right: 25px;
+	margin-left: 20px;
+	border: 2px solid var(--main-grey);
+   width: 50px;
+   height: 80px;
+   position: absolute;
+   color: var(--main-grey);
+   transform: scale(1);
+   transition: all 0.4s;
+   opacity: 0.8;
+   cursor: pointer;
+   background-color: rgba(0, 0, 0, 0.4);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   top: 50%;
+   transform: translate(0%, -50%);
+}
+
+.column__plus-wrapper-right:hover {
+	transform:translate(0%, -50%) scale(1.1);
+	opacity: 1;
+}
+
+.column__wrapper-plus-right{
+	text-align: center;
+	margin: 0;
+	position: absolute;
+	align-items: center;
+	line-height: 30px;
+	font-size: 30px;
+	font-weight: 800;
 }
