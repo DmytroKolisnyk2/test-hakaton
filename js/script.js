@@ -3,6 +3,9 @@ import { createCardFn } from "./function.js";
 import { addColumn } from "./function.js";
 import { saveChanges } from "./function.js";
 
+document.querySelectorAll(".column__plus-wrapper").forEach((btn) => {
+  btn.addEventListener("click", createCardFn);
+  //-----master----
 setInterval(saveChanges, 1000);
 // document.querySelector(".columns").children.forEach(child => child.remove());
 document.querySelector(".columns").innerHTML =
