@@ -9,34 +9,34 @@ const string = `<div class="card">
 </div>`;
 let index;
 export const moveCardRightFn = (event) => {
-  index = +event.currentTarget.parentNode.parentNode.parentNode.parentNode.dataset.index + 1;
-  console.log(index);
-   if (index === 1) index = document.querySelector(".columns").children.length;
-   document.querySelector(`.column__wrapper-cards--${index}`).appendChild(document.querySelector(".card").cloneNode(true));
-  removeCard(event);
-  document.querySelectorAll(".card__btn--trash").forEach((btn) => {
-     btn.addEventListener("click", removeCard);
-  });
-  document.querySelectorAll(".card__btn--arrow").forEach((elem) => {
-     document.querySelectorAll(".left").forEach((elem) => {
-        elem.addEventListener("click", moveCardLeftFn);
-     });
+   index = +event.currentTarget.parentNode.parentNode.parentNode.parentNode.dataset.index + 1;
+   if (index === document.querySelector(".columns").children.length + 1) index = 1;
+   document.querySelector(`.column__wrapper-cards--${index}`).prepend(event.currentTarget.parentNode.parentNode.parentNode.cloneNode(true));
+   removeCard(event);
+   document.querySelectorAll(".save-text").forEach((input) => input.addEventListener("input", (event) => (event.target.dataset.text = event.target.value)));
+   document.querySelectorAll(".card__btn--trash").forEach((btn) => {
+      btn.addEventListener("click", removeCard);
+   });
+   document.querySelectorAll(".card__btn--arrow").forEach((elem) => {
+      document.querySelectorAll(".left").forEach((elem) => {
+         elem.addEventListener("click", moveCardLeftFn);
+      });
 
-     document.querySelectorAll(".right").forEach((elem) => {
-        elem.addEventListener("click", moveCardRightFn);
-     });
-  });
-  //  document.querySelectorAll(".card__btn--arrow").forEach((elem) => {
-  //     document.querySelectorAll(".left").forEach((elem) => {
-  //        elem.addEventListener("click", moveCardLeftFn);
-  //     });
-  //     document.querySelectorAll(".card__btn--trash").forEach((btn) => {
-  //        btn.addEventListener("click", removeCard);
-  //     });
-  //     document.querySelectorAll(".right").forEach((elem) => {
-  //        elem.addEventListener("click", moveCardRightFn);
-  //     });
-  //  });
+      document.querySelectorAll(".right").forEach((elem) => {
+         elem.addEventListener("click", moveCardRightFn);
+      });
+   });
+   //  document.querySelectorAll(".card__btn--arrow").forEach((elem) => {
+   //     document.querySelectorAll(".left").forEach((elem) => {
+   //        elem.addEventListener("click", moveCardLeftFn);
+   //     });
+   //     document.querySelectorAll(".card__btn--trash").forEach((btn) => {
+   //        btn.addEventListener("click", removeCard);
+   //     });
+   //     document.querySelectorAll(".right").forEach((elem) => {
+   //        elem.addEventListener("click", moveCardRightFn);
+   //     });
+   //  });
    // document
    //   .querySelectorAll(".card__btn--arrow")[1]
    //   .addEventListener("click", moveCardRightFn);
@@ -47,10 +47,10 @@ export const moveCardRightFn = (event) => {
 
 export const moveCardLeftFn = (event) => {
    index = +event.currentTarget.parentNode.parentNode.parentNode.parentNode.dataset.index - 1;
-  if (index === 0) index = document.querySelector(".columns").children.length;
-  console.log(index);
-   document.querySelector(`.column__wrapper-cards--${index}`).appendChild(document.querySelector(".card").cloneNode(true));
-  removeCard(event);
+   if (index === 0) index = document.querySelector(".columns").children.length;
+   document.querySelector(`.column__wrapper-cards--${index}`).prepend(event.currentTarget.parentNode.parentNode.parentNode.cloneNode(true));
+   removeCard(event);
+   document.querySelectorAll(".save-text").forEach((input) => input.addEventListener("input", (event) => (event.target.dataset.text = event.target.value)));
    document.querySelectorAll(".card__btn--trash").forEach((btn) => {
       btn.addEventListener("click", removeCard);
    });
@@ -58,7 +58,6 @@ export const moveCardLeftFn = (event) => {
       document.querySelectorAll(".left").forEach((elem) => {
          elem.addEventListener("click", moveCardLeftFn);
       });
-     
       document.querySelectorAll(".right").forEach((elem) => {
          elem.addEventListener("click", moveCardRightFn);
       });
@@ -67,6 +66,8 @@ export const moveCardLeftFn = (event) => {
 
 export const createCardFn = (event) => {
    event.currentTarget.parentNode.insertAdjacentHTML("afterbegin", string);
+   document.querySelectorAll(".save-text").forEach((input) => input.addEventListener("input", (event) => (event.target.dataset.text = event.target.value)));
+
    document.querySelectorAll(".card__btn--trash").forEach((btn) => {
       btn.addEventListener("click", removeCard);
    });
@@ -82,7 +83,7 @@ export const createCardFn = (event) => {
 
 export const removeCard = (event) => {
    event.currentTarget.parentNode.parentNode.parentNode.classList.add("hidden-card");
-   event.currentTarget.parentNode.parentNode.parentNode.remove();
+   setTimeout((event) => event.target.parentNode.parentNode.parentNode.remove(), 200, event);
 };
 
 // ------master-------
@@ -131,4 +132,58 @@ export const addColumn = () => {
 export const saveChanges = () => {
    const saveString = document.querySelector(".columns").innerHTML;
    window.localStorage.setItem("progress", saveString);
+};
+
+export const resetSettingsFn = () => {
+   document.querySelector(".columns").innerHTML = `<div class="column">
+		   <div class="column__wrapper">
+			  <input type="text" placeholder="Title of column..." value="To do" class="column__title save-text"></input>
+			  <div class="column__wrapper-cards column__wrapper-cards--1" data-index="1">
+				 <div class="column__plus-wrapper">
+					<p class="column__wrapper--plus">+</p>
+				 </div>
+			  </div>
+		   </div>
+		</div>
+		<div class="column">
+		   <div class="column__wrapper">
+			<input type="text" placeholder="Title of column..." value="In progress" class="column__title save-text"></input>
+			  <div class="column__wrapper-cards column__wrapper-cards--2" data-index="2">
+				 <div class="column__plus-wrapper">
+					<p class="column__wrapper--plus">+</p>
+				 </div>
+			  </div>
+		   </div>
+		</div>
+		<div class="column">
+		   <div class="column__wrapper">
+			<input type="text" placeholder="Title of column..." value="Done" class="column__title save-text"></input>
+			  <div class="column__wrapper-cards column__wrapper-cards--3" data-index="3">
+				 <div class="column__plus-wrapper">
+					<p class="column__wrapper--plus">+</p>
+				 </div>
+			  </div>
+		   </div>
+		</div>`;
+   document.querySelectorAll(".column__plus-wrapper").forEach((btn) => {
+      btn.addEventListener("click", createCardFn);
+   });
+   document.querySelector(".column__plus-wrapper-right").addEventListener("click", addColumn);
+   document.querySelectorAll(".save-text").forEach((input) => input.addEventListener("input", (event) => (event.target.dataset.text = event.target.value)));
+   document.querySelectorAll(".save-text").forEach((input) => {
+      if (input.dataset.text === undefined) return;
+      input.value = input.dataset.text;
+   });
+   document.querySelectorAll(".card__btn--trash").forEach((btn) => {
+      btn.addEventListener("click", removeCard);
+   });
+   document.querySelectorAll(".card__btn--arrow").forEach((elem) => {
+      document.querySelectorAll(".left").forEach((elem) => {
+         elem.addEventListener("click", moveCardLeftFn);
+      });
+      document.querySelectorAll(".right").forEach((elem) => {
+         elem.addEventListener("click", moveCardRightFn);
+      });
+   });
+   alert("Вадиме навіщо ви все зламали?");
 };
