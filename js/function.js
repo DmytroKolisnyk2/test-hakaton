@@ -8,99 +8,93 @@ const string = `<div class="card">
  </ul>
 </div>`;
 let index;
-const moveCardRightFn = (event) => {
-  index =
-    +event.currentTarget.parentNode.parentNode.parentNode.parentNode.dataset
-      .index + 1;
-  if (index === 1) index = document.querySelector(".columns").children.length;
-  document
-    .querySelector(`.column__wrapper-cards--${index}`)
-    .appendChild(document.querySelector(".card").cloneNode(true));
+export const moveCardRightFn = (event) => {
+  index = +event.currentTarget.parentNode.parentNode.parentNode.parentNode.dataset.index + 1;
+  console.log(index);
+   if (index === 1) index = document.querySelector(".columns").children.length;
+   document.querySelector(`.column__wrapper-cards--${index}`).appendChild(document.querySelector(".card").cloneNode(true));
   removeCard(event);
-  document.querySelectorAll(".card__btn--arrow").forEach((elem) => {
-    document.querySelectorAll(".left").forEach((elem) => {
-      elem.addEventListener("click", moveCardLeftFn);
-    });
-    document.querySelectorAll(".card__btn--trash").forEach((btn) => {
-      btn.addEventListener("click", removeCard);
-    });
-    document.querySelectorAll(".right").forEach((elem) => {
-      elem.addEventListener("click", moveCardRightFn);
-    });
+  document.querySelectorAll(".card__btn--trash").forEach((btn) => {
+     btn.addEventListener("click", removeCard);
   });
-    // document
-    //   .querySelectorAll(".card__btn--arrow")[1]
-    //   .addEventListener("click", moveCardRightFn);
-    // document
-    //   .querySelectorAll(".card__btn--arrow")[0]
-    //   .addEventListener("click", moveCardLeftFn);
+  document.querySelectorAll(".card__btn--arrow").forEach((elem) => {
+     document.querySelectorAll(".left").forEach((elem) => {
+        elem.addEventListener("click", moveCardLeftFn);
+     });
+
+     document.querySelectorAll(".right").forEach((elem) => {
+        elem.addEventListener("click", moveCardRightFn);
+     });
+  });
+  //  document.querySelectorAll(".card__btn--arrow").forEach((elem) => {
+  //     document.querySelectorAll(".left").forEach((elem) => {
+  //        elem.addEventListener("click", moveCardLeftFn);
+  //     });
+  //     document.querySelectorAll(".card__btn--trash").forEach((btn) => {
+  //        btn.addEventListener("click", removeCard);
+  //     });
+  //     document.querySelectorAll(".right").forEach((elem) => {
+  //        elem.addEventListener("click", moveCardRightFn);
+  //     });
+  //  });
+   // document
+   //   .querySelectorAll(".card__btn--arrow")[1]
+   //   .addEventListener("click", moveCardRightFn);
+   // document
+   //   .querySelectorAll(".card__btn--arrow")[0]
+   //   .addEventListener("click", moveCardLeftFn);
 };
 
-const moveCardLeftFn = (event) => {
-  index =
-    +event.currentTarget.parentNode.parentNode.parentNode.parentNode.dataset
-      .index - 1;
+export const moveCardLeftFn = (event) => {
+   index = +event.currentTarget.parentNode.parentNode.parentNode.parentNode.dataset.index - 1;
   if (index === 0) index = document.querySelector(".columns").children.length;
-  document
-    .querySelector(`.column__wrapper-cards--${index}`)
-    .appendChild(document.querySelector(".card").cloneNode(true));
+  console.log(index);
+   document.querySelector(`.column__wrapper-cards--${index}`).appendChild(document.querySelector(".card").cloneNode(true));
   removeCard(event);
-  document.querySelectorAll(".card__btn--arrow").forEach((elem) => {
-    document.querySelectorAll(".left").forEach((elem) => {
-      elem.addEventListener("click", moveCardLeftFn);
-    });
-    document.querySelectorAll(".card__btn--trash").forEach((btn) => {
+   document.querySelectorAll(".card__btn--trash").forEach((btn) => {
       btn.addEventListener("click", removeCard);
-    });
-    document.querySelectorAll(".right").forEach((elem) => {
-      elem.addEventListener("click", moveCardRightFn);
-    });
-  });
-
+   });
+   document.querySelectorAll(".card__btn--arrow").forEach((elem) => {
+      document.querySelectorAll(".left").forEach((elem) => {
+         elem.addEventListener("click", moveCardLeftFn);
+      });
+     
+      document.querySelectorAll(".right").forEach((elem) => {
+         elem.addEventListener("click", moveCardRightFn);
+      });
+   });
 };
 
 export const createCardFn = (event) => {
-  
-  event.currentTarget.parentNode.insertAdjacentHTML("afterbegin", string);
-  document.querySelectorAll(".card__btn--trash").forEach((btn) => {
-    btn.addEventListener("click", removeCard);
-  });
-  document.querySelectorAll(".card__btn--arrow").forEach((elem) => {
-    document.querySelectorAll(".left").forEach((elem) => {
-      elem.addEventListener("click", moveCardLeftFn);
-    });
-    document.querySelectorAll(".card__btn--trash").forEach((btn) => {
-      btn.addEventListener("click", removeCard);
-    });
-    document.querySelectorAll(".right").forEach((elem) => {
-      elem.addEventListener("click", moveCardRightFn);
-    });
-  });
-};
-
-export const removeCard = (event) => {
-  event.currentTarget.parentNode.parentNode.parentNode.classList.add(
-    "hidden-card"
-  );
-  event.currentTarget.parentNode.parentNode.parentNode.remove();
-};
-
-// ------master-------
-   event.currentTarget.parentNode.parentNode.insertAdjacentHTML("afterbegin", string);
+   event.currentTarget.parentNode.insertAdjacentHTML("afterbegin", string);
    document.querySelectorAll(".card__btn--trash").forEach((btn) => {
       btn.addEventListener("click", removeCard);
    });
-   document.querySelectorAll(".card__btn--trash").forEach((btn) => {
-      btn.addEventListener("click", removeCard);
+   document.querySelectorAll(".card__btn--arrow").forEach((elem) => {
+      document.querySelectorAll(".left").forEach((elem) => {
+         elem.addEventListener("click", moveCardLeftFn);
+      });
+      document.querySelectorAll(".right").forEach((elem) => {
+         elem.addEventListener("click", moveCardRightFn);
+      });
    });
-  document.querySelectorAll(".save-text").forEach((input) => input.addEventListener("input", (event) => (event.target.dataset.text = event.target.value)));
-  
 };
 
 export const removeCard = (event) => {
    event.currentTarget.parentNode.parentNode.parentNode.classList.add("hidden-card");
    event.currentTarget.parentNode.parentNode.parentNode.remove();
 };
+
+// ------master-------
+// event.currentTarget.parentNode.parentNode.insertAdjacentHTML("afterbegin", string);
+document.querySelectorAll(".card__btn--trash").forEach((btn) => {
+   btn.addEventListener("click", removeCard);
+});
+document.querySelectorAll(".card__btn--trash").forEach((btn) => {
+   btn.addEventListener("click", removeCard);
+});
+document.querySelectorAll(".save-text").forEach((input) => input.addEventListener("input", (event) => (event.target.dataset.text = event.target.value)));
+
 export const addColumn = () => {
    const wrapper = document.querySelector(".columns");
 
@@ -122,9 +116,8 @@ export const addColumn = () => {
    });
    document.querySelectorAll(".save-text").forEach((input) => input.addEventListener("input", (event) => (event.target.dataset.text = event.target.value)));
 };
-export const removeColumn = event;
 
 export const saveChanges = () => {
-  const saveString = document.querySelector(".columns").innerHTML;
+   const saveString = document.querySelector(".columns").innerHTML;
    window.localStorage.setItem("progress", saveString);
 };
