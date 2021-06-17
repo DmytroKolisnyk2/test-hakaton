@@ -3,14 +3,15 @@
 .columns {
    display: flex;
    justify-content: space-between;
-   max-width: 1400px;
+   /* max-width: 1400px; */
    min-width: 100%;
+   overflow-x: auto;
    margin: 0 auto;
 }
 
 .column {
    max-width: 420px;
-	 min-width: 250px;
+   min-width: 300px;
    width: 33.333%;
    height: calc(100vh - 120px);
    border-radius: var(--main-border-radius);
@@ -24,6 +25,7 @@
    height: calc(100% - 60px);
 }
 .column__title {
+   width: 100%;
    font-family: var(--main-font);
    font-size: 30px;
    text-align: center;
@@ -45,7 +47,7 @@
    width: 50px;
    height: 50px;
    border-radius: 50%;
-	 position: absolute;
+   position: absolute;
    position: sticky;
    color: var(--main-grey);
    transform: scale(1);
@@ -57,7 +59,7 @@
    justify-content: center;
    align-items: center;
    bottom: 20px;
-	 top: 20px;
+   top: 20px;
    left: 50%;
    transform: translate(-50%, 0%);
 }
@@ -69,7 +71,8 @@
 
 .column__wrapper-cards {
    height: calc(100% - 160px);
-   overflow-y: scroll;
+   overflow-y: auto	;
+   overflow-x: hidden;
    border-radius: var(--main-border-radius);
    padding: 1px 8px 1px;
    position: relative;
@@ -95,6 +98,7 @@
    align-items: center;
    top: 50%;
    transform: translate(0%, -50%);
+   border-radius: 12px;
 }
 
 .column__plus-wrapper-right:hover {
