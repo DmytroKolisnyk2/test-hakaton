@@ -96,14 +96,24 @@ document.querySelectorAll(".card__btn--trash").forEach((btn) => {
 });
 document.querySelectorAll(".save-text").forEach((input) => input.addEventListener("input", (event) => (event.target.dataset.text = event.target.value)));
 
+export const removeColumnFn = (event) => {
+   event.currentTarget.parentNode.parentNode.parentNode.classList.add('hidden-card');
+   setTimeout((event) => {
+      event.target.parentNode.parentNode.parentNode.parentNode.remove();
+   }, 300, event)
+}; 
+
 export const addColumn = () => {
    const wrapper = document.querySelector(".columns");
 
    const columnString = `
 <div class="column">
 		   <div class="column__wrapper">
+         <div class ="wraper__input__btn">
 			<input type="text" placeholder="Title of column..." value="" class="column__title save-text"></input>
-			  <div class="column__wrapper-cards column__wrapper-cards--${wrapper.children.length + 1}" data-index="${wrapper.children.length + 1}">
+         <button class="remove__column__btn"><span class="remove__column__btn__text">+</span></button>
+         </div>
+			  <div class="column__wrapper-cards" data-index="${wrapper.children.length + 1}">
 				 <div class="column__plus-wrapper">
 					<p class="column__wrapper--plus">+</p>
 				 </div>
@@ -115,6 +125,7 @@ export const addColumn = () => {
    document.querySelectorAll(".column__wrapper--plus").forEach((btn) => {
       btn.addEventListener("click", createCardFn);
    });
+   document.querySelectorAll('.remove__column__btn').forEach(elem => {elem.addEventListener('click', removeColumnFn)});
    document.querySelectorAll(".save-text").forEach((input) => input.addEventListener("input", (event) => (event.target.dataset.text = event.target.value)));
 };
 
