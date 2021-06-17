@@ -44,6 +44,7 @@
    padding: 0;
 }
 .card__headline {
+	 width: calc(100% - 20px);
    border-radius: var(--main-border-radius);
    transition: 200ms linear;
    font-size: 26px;
