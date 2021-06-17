@@ -1,5 +1,16 @@
 const string = `<div class="card">
 <input type="text" placeholder="Your title..." class="card__headline save-text">
+<select class="card__priority">
+  <option style="background-color: red;
+  color: red;">red</option>
+  <option style="
+  background-color: rgb(255, 200, 32);
+  color: rgb(255, 200, 32);">yellow</option>
+  <option style="background-color: rgb(44, 231, 15);
+  color: rgb(44, 231, 15);">green</option>
+  <option style="background-color: rgb(237, 2, 250);
+  color: rgb(237, 2, 250);">purple</option>
+</select>
  <textarea class="card__textarea save-text" name="text" cols="30" rows="5" placeholder="Type your text here..."></textarea>
  <ul class="card__controls-wrapper">
     <li class="card__controls-item"><button class="card__btn card__btn--arrow left" data-value='left'>&#60;</button></li>
@@ -64,7 +75,7 @@ export const moveCardLeftFn = (event) => {
       });
    });
 };
-
+let id = 0;
 export const createCardFn = (event) => {
    event.currentTarget.parentNode.insertAdjacentHTML("afterbegin", string);
    document.querySelectorAll(".card__btn--trash").forEach((btn) => {
@@ -78,6 +89,16 @@ export const createCardFn = (event) => {
          elem.addEventListener("click", moveCardRightFn);
       });
    });
+  document.querySelectorAll(".card__priority").classList.add(id);
+  id++
+   document.querySelector(".card__priority").style.backgroundColor = `${document.querySelector(".card__priority").value}`
+   document.querySelectorAll(".card__priority").forEach((elem) => {
+    elem.addEventListener("change", () => {
+      document.querySelectorAll(".card__priority").forEach((elem) => {
+        elem.style.backgroundColor = `${document.querySelector(".card__priority").value}`
+      })
+    });
+  })
 };
 
 export const removeCard = (event) => {
