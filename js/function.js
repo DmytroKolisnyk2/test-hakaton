@@ -20,4 +20,22 @@ export const createCardFn =(event) => {
 export const removeCard = (event) => {
     event.currentTarget.parentNode.parentNode.parentNode.classList.add("hidden-card");
      event.currentTarget.parentNode.parentNode.parentNode.remove();
- }; 
+};
+export const addColumn = () => {
+  const wrapper = document.querySelector(".columns");
+
+  const columnString = `
+<div class="column">
+                  <div class="column__wrapper">
+                     <h2 class="column__title">Done</h2>
+                     <div class="column__wrapper-cards" data-index="${wrapper.children.length+1}">
+                        <div class="column__plus-wrapper">
+                           <p class="column__wrapper--plus">+</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+`;
+  wrapper.insertAdjacentHTML('beforeend',columnString)
+}
+export const removeColumn = (event)

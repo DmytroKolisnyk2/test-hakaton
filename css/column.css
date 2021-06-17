@@ -4,14 +4,15 @@
    display: flex;
    justify-content: space-between;
    max-width: 1400px;
-   width: 100%;
+   min-width: 100%;
    margin: 0 auto;
 }
 
 .column {
    max-width: 420px;
+	 min-width: 250px;
    width: 33.333%;
-   height: calc(100vh - 100px);
+   height: calc(100vh - 120px);
    border-radius: var(--main-border-radius);
    border: 3px solid var(--main-blue);
    background-color: #3fc1c9;
