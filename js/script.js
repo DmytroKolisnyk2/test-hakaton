@@ -3,6 +3,7 @@ import { createCardFn } from "./function.js";
 import { addColumn } from "./function.js";
 import { saveChanges } from "./function.js";
 import {moveCardLeftFn,moveCardRightFn } from "./function.js";
+import {resetSettingsFn} from "./function.js";
 setInterval(saveChanges, 1000);
 // document.querySelector(".columns").children.forEach(child => child.remove());
 document.querySelector(".columns").innerHTML =
@@ -57,3 +58,5 @@ document.querySelectorAll(".card__btn--arrow").forEach((elem) => {
       elem.addEventListener("click", moveCardRightFn);
    });
 });
+
+document.querySelector(".content__reset").addEventListener("click", resetSettingsFn)
