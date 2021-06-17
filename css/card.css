@@ -48,15 +48,17 @@
    padding: 0;
 }
 .card__headline {
-   width: calc(100% - 20px);
+   width: calc(100% - 40px);
    border-radius: var(--main-border-radius);
    transition: 200ms linear;
    font-size: 26px;
    font-family: var(--main-font);
    font-weight: 600;
-   margin-bottom: 20px;
+
+   margin:0 auto 20px;
    background-color: transparent;
    cursor: pointer;
+   padding-left: 10px;
 }
 .card__headline::first-letter {
    text-transform: uppercase;
