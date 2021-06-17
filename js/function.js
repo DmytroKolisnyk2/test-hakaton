@@ -89,8 +89,7 @@ export const createCardFn = (event) => {
          elem.addEventListener("click", moveCardRightFn);
       });
    });
-  document.querySelectorAll(".card__priority").classList.add(id);
-  id++
+  
    document.querySelector(".card__priority").style.backgroundColor = `${document.querySelector(".card__priority").value}`
    document.querySelectorAll(".card__priority").forEach((elem) => {
     elem.addEventListener("change", () => {
