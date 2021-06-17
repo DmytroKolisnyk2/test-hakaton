@@ -1,5 +1,5 @@
 .wrapper__header__trello {
-   width: 100%;
+   min-width: 100%;
    min-height: 100vh;
    background-image: url("../img/bckg_header.jpg");
    background-position: center;
