@@ -41,3 +41,8 @@ export const addColumn = () => {
    });
 };
 export const removeColumn = event;
+
+export const saveChanges = () => {
+  const saveString = document.querySelector(".columns").innerHTML;
+  window.localStorage.setItem("progress", saveString);
+}
