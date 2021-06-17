@@ -10,7 +10,7 @@ document.querySelector(".columns").innerHTML =
    `<div class="column">
 		   <div class="column__wrapper">
 			  <input type="text" placeholder="Title of column..." value="To do" class="column__title save-text"></input>
-			  <div class="column__wrapper-cards" data-index="1">
+			  <div class="column__wrapper-cards column__wrapper-cards--1" data-index="1">
 				 <div class="column__plus-wrapper">
 					<p class="column__wrapper--plus">+</p>
 				 </div>
@@ -20,7 +20,7 @@ document.querySelector(".columns").innerHTML =
 		<div class="column">
 		   <div class="column__wrapper">
 			<input type="text" placeholder="Title of column..." value="In progress" class="column__title save-text"></input>
-			  <div class="column__wrapper-cards" data-index="2">
+			  <div class="column__wrapper-cards column__wrapper-cards--2" data-index="2">
 				 <div class="column__plus-wrapper">
 					<p class="column__wrapper--plus">+</p>
 				 </div>
@@ -30,7 +30,7 @@ document.querySelector(".columns").innerHTML =
 		<div class="column">
 		   <div class="column__wrapper">
 			<input type="text" placeholder="Title of column..." value="Done" class="column__title save-text"></input>
-			  <div class="column__wrapper-cards" data-index="3">
+			  <div class="column__wrapper-cards column__wrapper-cards--3" data-index="3">
 				 <div class="column__plus-wrapper">
 					<p class="column__wrapper--plus">+</p>
 				 </div>
