@@ -96,7 +96,10 @@ document.querySelectorAll(".card__btn--trash").forEach((btn) => {
 document.querySelectorAll(".save-text").forEach((input) => input.addEventListener("input", (event) => (event.target.dataset.text = event.target.value)));
 
 export const removeColumnFn = (event) => {
-   event.currentTarget.parentNode.parentNode.parentNode.remove();
+   event.currentTarget.parentNode.parentNode.parentNode.classList.add('hidden-card');
+   setTimeout((event) => {
+      event.target.parentNode.parentNode.parentNode.parentNode.remove();
+   }, 300, event)
 }; 
 
 export const addColumn = () => {

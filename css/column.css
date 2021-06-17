@@ -19,6 +19,7 @@
    background-color: #3fc1c9;
    margin: 0 10px;
    padding: 12px;
+   transition: 200ms linear;
 }
 
 .column__wrapper {
