@@ -48,7 +48,7 @@ export const moveCardLeftFn = (event) => {
 };
 
 export const createCardFn = (event) => {
-   event.currentTarget.parentNode.insertAdjacentHTML("afterbegin", string);
+   event.target.parentNode.parentNode.insertAdjacentHTML("afterbegin", string);
    document.querySelectorAll(".save-text").forEach((input) => input.addEventListener("input", (event) => (event.target.dataset.text = event.target.value)));
 
    document.querySelectorAll(".card__btn--trash").forEach((btn) => {
@@ -67,7 +67,7 @@ export const createCardFn = (event) => {
 };
 
 export const removeCard = (event) => {
-   event.currentTarget.parentNode.parentNode.parentNode.classList.add("hidden-card");
+   event.target.parentNode.parentNode.parentNode.classList.add("hidden-card");
    setTimeout((event) => event.target.parentNode.parentNode.parentNode.remove(), 200, event);
 };
 
