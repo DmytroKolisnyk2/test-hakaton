@@ -221,5 +221,5 @@ export const resetSettingsFn = () => {
    document.querySelectorAll(".remove__column__btn").forEach((elem) => {
       elem.addEventListener("click", removeColumnFn);
    });
-   alert("Trello reseted");
+   alert("Trello was reseted");
 };
