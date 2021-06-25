@@ -8,6 +8,7 @@ const string = `<div class="card">
  </ul>
 </div>`;
 let index;
+let blocked = false;
 export const moveCardRightFn = (event) => {
    index = +event.currentTarget.parentNode.parentNode.parentNode.parentNode.dataset.index + 1;
    if (index === document.querySelector(".columns").children.length + 1) index = 1;
@@ -48,6 +49,8 @@ export const moveCardLeftFn = (event) => {
 };
 
 export const createCardFn = (event) => {
+   if (blocked) return;
+
    event.target.parentNode.parentNode.insertAdjacentHTML("afterbegin", string);
    document.querySelectorAll(".save-text").forEach((input) => input.addEventListener("input", (event) => (event.target.dataset.text = event.target.value)));
 
@@ -62,8 +65,16 @@ export const createCardFn = (event) => {
          elem.addEventListener("click", moveCardRightFn);
       });
    });
-  event.target.parentNode.parentNode.children[0].classList.add("hidden-card");
-  setTimeout((event) => event.target.parentNode.parentNode.children[0].classList.remove("hidden-card"), 200, event);
+   event.target.parentNode.parentNode.children[0].classList.add("hidden-card");
+   blocked = true;
+   setTimeout(
+      (event) => {
+         event.target.parentNode.parentNode.children[0].classList.remove("hidden-card");
+         blocked = false;
+      },
+      200,
+      event
+   );
 };
 
 export const removeCard = (event) => {
@@ -106,8 +117,8 @@ export const removeColumnFn = (event) => {
 };
 
 export const addColumn = () => {
+   if (blocked) return;
    const wrapper = document.querySelector(".columns");
-
    const columnString = `
 <div class="column">
 		   <div class="column__wrapper">
@@ -130,10 +141,18 @@ export const addColumn = () => {
    document.querySelectorAll(".remove__column__btn").forEach((elem) => {
       elem.addEventListener("click", removeColumnFn);
    });
-  document.querySelectorAll(".save-text").forEach((input) => input.addEventListener("input", (event) => (event.target.dataset.text = event.target.value)));
-  console.log(wrapper.lastElementChild);
-  wrapper.lastElementChild.classList.add("hidden-card");
-  setTimeout((wrapper) => wrapper.lastElementChild.classList.remove("hidden-card"), 200, wrapper);
+   document.querySelectorAll(".save-text").forEach((input) => input.addEventListener("input", (event) => (event.target.dataset.text = event.target.value)));
+   console.log(wrapper.lastElementChild);
+   wrapper.lastElementChild.classList.add("hidden-card");
+   blocked = true;
+   setTimeout(
+      (wrapper) => {
+         wrapper.lastElementChild.classList.remove("hidden-card");
+         blocked = false;
+      },
+      200,
+      wrapper
+   );
 };
 
 export const saveChanges = () => {
